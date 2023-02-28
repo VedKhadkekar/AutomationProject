@@ -6,9 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 
-public class SauceLabLogin {
+public class SauceLabLoginPage {
     WebDriver driver;
-    public SauceLabLogin(WebDriver driver){
+    public SauceLabLoginPage(WebDriver driver){
                 this.driver = driver;
         PageFactory.initElements(new DefaultElementLocatorFactory(driver),this);
     }

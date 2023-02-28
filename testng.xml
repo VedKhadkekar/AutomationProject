@@ -3,7 +3,7 @@
 <suite name="loan_department">
     <test name="Mobile test">
         <classes>
-            <class name="WebTest.Test1"/>
+           <class name="WebTest.Test1"/>
             <class name="WebTest.Test2"/>
             <class name="WebTest.Test3"/>
         </classes>
