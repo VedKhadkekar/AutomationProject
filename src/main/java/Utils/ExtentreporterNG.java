@@ -1,19 +1,19 @@
 package Utils;
 
+import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-
-import java.io.FileInputStream;
 
 public class ExtentreporterNG{
 
-    public void getExtentReportObject(){
+    static ExtentReports extentReports;
+    public static ExtentReports getExtentReportObject(){
         //ExtentReport and ExtentSparkreporter
-        //FileInputStream
-        //ExtentSparkReporter extentSparkreporter = new ExtentSparkReporter()
+        String path = System.getProperty("user.dir") + "//reports//xtentReportResults.html";
+        ExtentSparkReporter extentSparkreporter = new ExtentSparkReporter(path);
 
-
-
-
+        extentReports = new ExtentReports();
+        extentReports.attachReporter(extentSparkreporter);
+         return extentReports;
 
     }
 }

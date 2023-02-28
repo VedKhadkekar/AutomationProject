@@ -1,6 +1,7 @@
 package WebTest;
 
 import POClass.SauceLabLoginPage;
+import Utils.ListnersForReport;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -9,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.*;
 
 import java.io.FileInputStream;
@@ -21,12 +23,9 @@ public class BasicTest{
     WebDriver driver;
     public SauceLabLoginPage sauceLabLogin;
     private Properties properties;
+    public  ListnersForReport listnersForReport;
 
-    private final String propertyFilePath;
-
-    public BasicTest() {
-        propertyFilePath = System.getProperty("user.dir") +"\\src\\test\\resources\\config\\selenium.properties";
-    }
+    private final String propertyFilePath = System.getProperty("user.dir") +"\\src\\test\\resources\\config\\selenium.properties";
 
     @BeforeClass
     public void driverInitialization() throws IOException {
@@ -37,11 +36,17 @@ public class BasicTest{
 
     }
 
+    @AfterClass
+    public void tearDown(){
+        driver.quit();
+    }
+
 
     @BeforeMethod
-    public void openBrowser(){
+    public void openBrowser(ITestContext context){
         if(properties.getProperty("browser.name").equalsIgnoreCase("chrome")){
             driver = new ChromeDriver();
+
         }else if(properties.getProperty("browser.name").equalsIgnoreCase("firefox")){
             driver = new FirefoxDriver();
         }else if(properties.getProperty("browser.name").equalsIgnoreCase("edgechrome")){
@@ -50,6 +55,7 @@ public class BasicTest{
         else{
 
         }
+        context.setAttribute("driver",driver);
         driver.get(properties.getProperty("browser.url"));
         sauceLabLogin = new SauceLabLoginPage(driver);
     }
@@ -93,6 +99,8 @@ public class BasicTest{
 
         return data;
     }
+
+
 
     /*public void config(){
         Config config = new
