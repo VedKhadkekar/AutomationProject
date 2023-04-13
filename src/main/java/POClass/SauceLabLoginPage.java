@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 
-public class SauceLabLoginPage extends BasicPO{
+public class SauceLabLoginPage{
     WebDriver driver;
     public SauceLabLoginPage(WebDriver driver){
                 this.driver = driver;

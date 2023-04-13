@@ -1,4 +1,4 @@
-package WebTest;
+package Base;
 
 import POClass.SauceLabLoginPage;
 import Utils.ListnersForReport;
@@ -11,12 +11,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestContext;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Properties;
 
 public class BasicTest{
@@ -46,7 +47,6 @@ public class BasicTest{
     public void openBrowser(ITestContext context){
         if(properties.getProperty("browser.name").equalsIgnoreCase("chrome")){
             driver = new ChromeDriver();
-
         }else if(properties.getProperty("browser.name").equalsIgnoreCase("firefox")){
             driver = new FirefoxDriver();
         }else if(properties.getProperty("browser.name").equalsIgnoreCase("edgechrome")){
@@ -74,7 +74,7 @@ public class BasicTest{
         return data;
     }*/
 
-    public Object[][] getExcelData(String fileName, String sheetName) {
+    public static Object[][] getExcelData(String fileName, String sheetName) {
         String[][] data = null;
         try {
             fileName = System.getProperty("user.dir") +"\\src\\test\\resources\\global\\"+fileName+".xlsx";

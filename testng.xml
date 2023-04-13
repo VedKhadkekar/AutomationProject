@@ -4,11 +4,11 @@
     <listeners>
         <listener class-name="Utils.ListnersForReport"></listener>
     </listeners>
-    <test name="Mobile test">
+    <test name="Mobile test" parallel="classes" thread-count="2">
         <classes>
-          <!-- <class name="WebTest.TvfzafdaftAayaYYYYR est1"/>-->
-            <class name="WebTest.Test1"/>
-            <!--<class name="WebTest.Test3"/>-->
+          <class name="WebTest.Test1"/>
+            <class name="WebTest.Test2"/>
+            <class name="WebTest.Test3"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
