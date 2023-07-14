@@ -1,15 +1,15 @@
 package POClass;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 
-public class SauceLabLoginPage{
-    WebDriver driver;
-    public SauceLabLoginPage(WebDriver driver){
-                this.driver = driver;
+public class SauceLabLoginPage {
+    RemoteWebDriver driver;
+    public SauceLabLoginPage(RemoteWebDriver driver){
+        this.driver = driver;
         PageFactory.initElements(new DefaultElementLocatorFactory(driver),this);
     }
 
@@ -30,6 +30,10 @@ public class SauceLabLoginPage{
 
     public String getTitle(){
         return title.getText();
+    }
+
+    public String title(){
+        return driver.getTitle();
     }
 
     public String getErrormessage(){

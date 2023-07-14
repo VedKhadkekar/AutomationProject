@@ -1,15 +1,14 @@
 package Base;
 
-import POClass.SauceLabLoginPage;
 import Utils.ListnersForReport;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -18,11 +17,12 @@ import org.testng.annotations.BeforeMethod;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 
 public class BasicTest{
-    WebDriver driver;
-    public SauceLabLoginPage sauceLabLogin;
+    public RemoteWebDriver driver;
     private Properties properties;
     public  ListnersForReport listnersForReport;
 
@@ -44,9 +44,12 @@ public class BasicTest{
 
 
     @BeforeMethod
-    public void openBrowser(ITestContext context){
+    public void openBrowser(ITestContext context) throws MalformedURLException {
+        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+        desiredCapabilities.setBrowserName("chrome");
+        URL url = new URL("http://localhost:4444/wd/hub");
         if(properties.getProperty("browser.name").equalsIgnoreCase("chrome")){
-            driver = new ChromeDriver();
+            driver = new RemoteWebDriver(url,desiredCapabilities);
         }else if(properties.getProperty("browser.name").equalsIgnoreCase("firefox")){
             driver = new FirefoxDriver();
         }else if(properties.getProperty("browser.name").equalsIgnoreCase("edgechrome")){
@@ -57,7 +60,6 @@ public class BasicTest{
         }
         context.setAttribute("driver",driver);
         driver.get(properties.getProperty("browser.url"));
-        sauceLabLogin = new SauceLabLoginPage(driver);
     }
     @AfterMethod
     public void closeBrowser(){
