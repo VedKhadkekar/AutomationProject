@@ -5,6 +5,8 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -23,11 +25,11 @@ import java.net.URL;
 import java.util.Properties;
 
 public class BasicTest{
-    public RemoteWebDriver driver;
+    public WebDriver driver;
     private Properties properties;
     public  ListnersForReport listnersForReport;
 
-    private final String propertyFilePath = System.getProperty("user.dir") +"\\src\\test\\resources\\config\\selenium.properties";
+    private final String propertyFilePath = System.getProperty("user.dir") +"/src/test/resources/config/selenium.properties";
 
     @BeforeClass
     public void driverInitialization() throws IOException {
@@ -46,11 +48,12 @@ public class BasicTest{
 
     @BeforeMethod
     public void openBrowser(ITestContext context) throws MalformedURLException {
-        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+        /*DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setBrowserName("chrome");
-        URL url = new URL("http://localhost:4444/wd/hub");
+        URL url = new URL("http://localhost:4444/wd/hub");*/
         if(properties.getProperty("browser.name").equalsIgnoreCase("chrome")){
-            driver = new RemoteWebDriver(url,desiredCapabilities);
+            driver = new ChromeDriver();
+            //driver = new RemoteWebDriver(url,desiredCapabilities);
         }else if(properties.getProperty("browser.name").equalsIgnoreCase("firefox")){
             driver = new FirefoxDriver();
         }else if(properties.getProperty("browser.name").equalsIgnoreCase("edgechrome")){
@@ -83,7 +86,7 @@ public class BasicTest{
     public static Object[][] getExcelData(String fileName, String sheetName) {
         String[][] data = null;
         try {
-            fileName = System.getProperty("user.dir") +"\\src\\test\\resources\\global\\"+fileName+".xlsx";
+            fileName = System.getProperty("user.dir") +"/src/test/resources/global/"+fileName+".xlsx";
             FileInputStream fis = new FileInputStream(fileName);
             XSSFWorkbook workbook = new XSSFWorkbook(fis);
             XSSFSheet sheet = workbook.getSheet(sheetName);

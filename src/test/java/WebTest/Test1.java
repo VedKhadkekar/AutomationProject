@@ -6,12 +6,12 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Test1 extends BasicTest{
-    SauceLabLoginPage sauceLabLogin = new SauceLabLoginPage(driver);
+
 
     @Test
 
     public void webTest(){
-
+        SauceLabLoginPage sauceLabLogin = new SauceLabLoginPage(driver);
         sauceLabLogin.enterUsername("locked_out_user");
         sauceLabLogin.enterPassword("secret_sauce");
         sauceLabLogin.clickLogin();

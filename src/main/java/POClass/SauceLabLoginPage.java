@@ -1,5 +1,7 @@
 package POClass;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -7,9 +9,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 
 public class SauceLabLoginPage {
-    RemoteWebDriver driver;
-    public SauceLabLoginPage(RemoteWebDriver driver){
-        this.driver = driver;
+    WebDriver driver;
+    public SauceLabLoginPage(WebDriver webdriver){
+        driver = webdriver;
         PageFactory.initElements(new DefaultElementLocatorFactory(driver),this);
     }
 
@@ -41,7 +43,8 @@ public class SauceLabLoginPage {
     }
 
     public void enterUsername(String uname){
-        username.sendKeys(uname);
+        //username.sendKeys(uname);
+        driver.findElement(By.id("user-name")).sendKeys(uname);
     }
 
     public void enterPassword(String pass){
