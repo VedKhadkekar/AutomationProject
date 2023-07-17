@@ -64,7 +64,6 @@ public class BasicTest{
         }
         context.setAttribute("driver",driver);
         driver.get(properties.getProperty("browser.url"));
-        sauceLabLogin = new SauceLabLoginPage(driver);
     }
     @AfterMethod
     public void closeBrowser(){
