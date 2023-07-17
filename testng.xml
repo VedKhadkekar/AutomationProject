@@ -4,11 +4,22 @@
     <listeners>
         <listener class-name="Utils.ListnersForReport"></listener>
     </listeners>
-    <test name="Mobile test" parallel="classes" thread-count="2">
+    <parameter name="browserName" value="chrome"></parameter>
+    <!--<test name="Mobile test" parallel="classes" thread-count="2">
         <classes>
           <class name="WebTest.Test1"/>
             <class name="WebTest.Test2"/>
             <class name="WebTest.Test3"/>
         </classes>
-    </test> <!-- Test -->
+    </test>--> <!-- Test -->
+
+    <test name="Mobile test Browser">
+        <classes>
+            <class name="AndroidMobileTest.OpenBrowserOnAndroid"/>
+        </classes>
+    </test>
+
+
+
+
 </suite> <!-- Suite -->

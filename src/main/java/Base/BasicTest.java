@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -26,7 +27,7 @@ public class BasicTest{
     private Properties properties;
     public  ListnersForReport listnersForReport;
 
-    private final String propertyFilePath = System.getProperty("user.dir") +"\\src\\test\\resources\\config\\selenium.properties";
+    private final String propertyFilePath = "//Users//vedantkhadkekar//Documents//Workspace//AutomationProject//src//test//resources//config//selenium.properties";
 
     @BeforeClass
     public void driverInitialization() throws IOException {
@@ -51,6 +52,9 @@ public class BasicTest{
             driver = new FirefoxDriver();
         }else if(properties.getProperty("browser.name").equalsIgnoreCase("edgechrome")){
             driver = new EdgeDriver();
+        }
+        else if(properties.getProperty("browser.name").equalsIgnoreCase("safari")){
+            driver = new SafariDriver();
         }
         else{
 
