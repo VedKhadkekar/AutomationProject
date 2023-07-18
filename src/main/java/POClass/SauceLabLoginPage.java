@@ -8,15 +8,16 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 
-public class SauceLabLoginPage {
+public class SauceLabLoginPage extends BasicPO {
     WebDriver driver;
     public SauceLabLoginPage(WebDriver webdriver){
+        super(webdriver);
         driver = webdriver;
         PageFactory.initElements(new DefaultElementLocatorFactory(driver),this);
     }
 
     @FindBy(id = "user-name")
-    private WebElement username;
+    public WebElement username;
 
     @FindBy(id = "password")
     private WebElement password;
@@ -44,7 +45,7 @@ public class SauceLabLoginPage {
 
     public void enterUsername(String uname){
         //username.sendKeys(uname);
-        driver.findElement(By.id("user-name")).sendKeys(uname);
+        sendKeys(username,uname);
     }
 
     public void enterPassword(String pass){

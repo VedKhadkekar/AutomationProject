@@ -1,5 +1,6 @@
 package Base;
 
+import UserException.UserDefinedException;
 import Utils.ListnersForReport;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -9,8 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
@@ -21,7 +20,6 @@ import org.testng.annotations.BeforeMethod;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Properties;
 
 public class BasicTest{
@@ -36,7 +34,6 @@ public class BasicTest{
         properties = new Properties();
         FileInputStream fileInputStream = new FileInputStream(propertyFilePath);
         properties.load(fileInputStream);
-
 
     }
 
@@ -109,6 +106,42 @@ public class BasicTest{
         return data;
     }
 
+
+    public void handleException(Exception e) throws UserDefinedException {
+
+        String[] error = e.toString().split(":");
+        String errorMsg = error[0];
+        if(errorMsg.equalsIgnoreCase("org.openqa.selenium.NoSuchElementException")){
+            throw new UserDefinedException("Kindly check the Xpath");
+        }
+        else if(errorMsg.equalsIgnoreCase("org.openqa.selenium.NoSuchWindowException")){
+
+        }
+        else if(errorMsg.equalsIgnoreCase("org.openqa.selenium.NoSuchFrameException")){
+
+        }
+        else if(errorMsg.equalsIgnoreCase("org.openqa.selenium.NoAlertPresentException")){
+
+        }
+        else if(errorMsg.equalsIgnoreCase("org.openqa.selenium.ElementNotVisibleException")){
+
+        }
+        else if(errorMsg.equalsIgnoreCase("org.openqa.selenium.TimeoutException")){
+
+        }
+        else if(errorMsg.equalsIgnoreCase("org.openqa.selenium.NoSuchSessionException")){
+
+        }
+        else if(errorMsg.equalsIgnoreCase("org.openqa.selenium.StaleElementReferenceException")){
+
+        }
+        else if(errorMsg.equalsIgnoreCase("org.openqa.selenium.StaleElementReferenceException")){
+
+        }
+
+
+
+    }
 
 
     /*public void config(){

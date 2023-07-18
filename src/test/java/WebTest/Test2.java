@@ -2,6 +2,7 @@ package WebTest;
 
 import Base.BasicTest;
 import POClass.SauceLabLoginPage;
+import UserException.UserDefinedException;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -16,7 +17,7 @@ public class Test2 extends BasicTest {
     }
 
     @Test(dataProvider = "getAllDataFromExcelSheet")
-    public void loginTest(String username, String password){
+    public void loginTest(String username, String password) throws UserDefinedException {
         try {
             sauceLabLogin.enterUsername(username);
             sauceLabLogin.enterPassword(password);
@@ -24,7 +25,7 @@ public class Test2 extends BasicTest {
             Assert.assertEquals(sauceLabLogin.title(), "Products", "Verified");
         }
         catch (Exception e){
-
+            handleException(e);
         }
 
     }
