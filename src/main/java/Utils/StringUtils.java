@@ -35,9 +35,9 @@ public class StringUtils {
     }
 
     //get random string
-    public static String getRandomString(){
+    /*public static String getRandomString(){
         String input = "random";
         String output = NumbersUtils.getRandomNumberWithRangeInteger(1,100)+ input;
         return output;
-    }
+    }*/
 }

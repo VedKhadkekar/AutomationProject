@@ -6,11 +6,11 @@ import java.util.Random;
 public class NumbersUtils {
 
     // create random number : given the start and end number
-    public static int getRandomNumberWithRangeInteger(int inBound, int outBound){
+    /*public static int getRandomNumberWithRangeInteger(int inBound, int outBound){
         Random random = new Random();
         int randomInt = random.nextInt(inBound,outBound);
         return randomInt;
-    }
+    }*/
 
     // convert string to number
     public static int stringToIntFormat(String input){
@@ -33,8 +33,8 @@ public class NumbersUtils {
     //ascending order int from list
     // descending order int from list
 
-    public static void main(String[] arges){
+   /* public static void main(String[] arges){
        getRandomNumberWithRangeInteger(1,100);
-    }
+    }*/
 
 }
