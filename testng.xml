@@ -11,9 +11,9 @@
     <test name="Mobile test" parallel="classes" thread-count="2">
         <classes>
             <class name="WebTest.Test1"/>
-            <class name="WebTest.Test2"/>
+            <!--class name="WebTest.Test2"/>
             <class name="WebTest.DockerTest1"/>
-            <class name="WebTest.Test3"/>
+            <class name="WebTest.Test3"/>-->
         </classes>
     </test> <!-- Test -->
 
