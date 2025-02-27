@@ -1,6 +1,11 @@
 
 pipeline {
     agent any
+
+    environment{
+
+    PATH = ""
+    }
     /* agent{
          docker { image ''}
          } */
@@ -24,7 +29,7 @@ pipeline {
         stage('Build') {
             steps {
             echo 'this is for test'
-                sh "mvn clean test"
+             sh 'whereis mvn'
             }
 
             /* post {
