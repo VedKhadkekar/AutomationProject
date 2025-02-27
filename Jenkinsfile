@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh "mvn clean test -Dsurefire.suiteXmlFiles=testng.xml"
+                sh "clean test -Dsurefire.suiteXmlFiles=testng.xml"
             }
 
             /* post {
