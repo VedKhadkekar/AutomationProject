@@ -11,9 +11,9 @@ pipeline {
              } */
 
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
-                sh 'clean test -Dsurefire.suiteXmlFiles=testng.xml'
+                bat 'mvn clean test -Dsurefire.suiteXmlFiles=testng.xml'
             }
 
             /* post {
