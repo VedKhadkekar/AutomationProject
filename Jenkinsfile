@@ -5,15 +5,15 @@ pipeline {
          docker { image ''}
          } */
 
-         tools {
+         /* maventools {
                  maven 'Maven 3.9.9'
-                 //jdk 'jdk8'
-             }
+                 jdk 'jdk8'
+             } */
 
     stages {
         stage('Test') {
             steps {
-                sh "clean test -Dsurefire.suiteXmlFiles=testng.xml"
+                sh 'mvn clean test -Dsurefire.suiteXmlFiles=testng.xml'
             }
 
             /* post {
