@@ -5,26 +5,26 @@ pipeline {
          docker { image ''}
          } */
 
-         tools {
+        /*  tools {
                  maven 'Maven 3.9.9'
                  jdk 'jdk11'
-             }
+             } */
 
     stages {
 
-         stage ('Initialize') {
+         /* stage ('Initialize') {
                 steps {
                     sh '''
                         echo "PATH = ${PATH}"
                         echo "M2_HOME = ${M2_HOME}"
                     '''
                 }
-         }
+         } */
 
         stage('Build') {
             steps {
             echo 'this is for test'
-                sh 'mvn clean test -Dsurefire.suiteXmlFiles=testng.xml'
+                sh 'mvn clean test'
             }
 
             /* post {
