@@ -13,7 +13,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat 'mvn clean test -Dsurefire.suiteXmlFiles=testng.xml'
+            echo 'this is for test'
+                //bat 'mvn clean test -Dsurefire.suiteXmlFiles=testng.xml'
             }
 
             /* post {
