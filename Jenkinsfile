@@ -24,7 +24,7 @@ pipeline {
         stage('Build') {
             steps {
             echo 'this is for test'
-                sh 'mvn clean test'
+                sh mvn clean test
             }
 
             /* post {
