@@ -1,11 +1,19 @@
 
 pipeline {
     agent any
+    /* agent{
+         docker { image ''}
+         } */
+
+         tools {
+                 maven 'Maven 3.3.9'
+                 jdk 'jdk8'
+             }
 
     stages {
         stage('Test') {
             steps {
-                bat "mvn clean test -Dsurefire.suiteXmlFiles=testng.xml"
+                sh "mvn clean test -Dsurefire.suiteXmlFiles=testng.xml"
             }
 
             /* post {
