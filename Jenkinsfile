@@ -4,7 +4,7 @@ pipeline {
 
     environment{
 
-    PATH = ""
+    PATH = "/Users/vedantkhadkekar/Documents/software_install/apache-maven-3.9.2"
     }
     /* agent{
          docker { image ''}
