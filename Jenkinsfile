@@ -29,7 +29,7 @@ pipeline {
         stage('Build') {
             steps {
             echo 'this is for test'
-             sh 'whereis mvn'
+             sh 'mvn clean test -Dsurefire.suiteXmlFiles=testng.xml'
             }
 
             /* post {
@@ -40,7 +40,6 @@ pipeline {
                        allowMissing: false,
                        alwaysLinkToLastBuild: false,
                        keepAll: false,
-                       reportDir: 'target/surefire-reports/',
                        reportFiles: 'emailable-report.html',
                        reportName: 'HTML Report',
                        reportTitles: '',
