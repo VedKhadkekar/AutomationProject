@@ -1,7 +1,7 @@
 
 pipeline {
-    //agent any
-        agent { docker { image 'selenium/node-chrome' } }
+    agent any
+
 
     /* environment{
 
