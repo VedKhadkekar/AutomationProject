@@ -2,18 +2,17 @@
 pipeline {
     agent any
 
-    environment{
+    /* environment{
 
     PATH = "/Users/vedantkhadkekar/Documents/software_install/apache-maven-3.9.2"
-    }
+    } */
     /* agent{
          docker { image ''}
          } */
 
-        /*  tools {
-                 maven 'Maven 3.9.9'
-                 jdk 'jdk11'
-             } */
+        tools {
+                 maven 'maven'
+             }
 
     stages {
 
