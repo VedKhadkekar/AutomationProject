@@ -25,6 +25,28 @@ pipeline {
                 }
          } */
 
+         stage('Run Selenium Tests') {
+
+                     steps {
+
+                         docker.image('selenium/hub') {
+
+                             containerLabel 'selenium-hub'
+
+                             // Run the Selenium Hub container
+
+                         }
+
+                         docker.image('selenium/node-chrome') {
+
+                             containerLabel 'selenium-chrome-node'
+
+                             // Run the Chrome node container, linking to the Selenium Hub
+
+                         }
+                     }
+         }
+
         stage('Build') {
             steps {
             echo 'this is for test'
